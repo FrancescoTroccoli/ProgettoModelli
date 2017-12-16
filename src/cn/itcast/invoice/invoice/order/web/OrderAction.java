@@ -110,7 +110,7 @@ public class OrderAction extends BaseAction{
 			}
 		}
 		*/
-		A:
+		
 		for(int i = supplierList.size()-1;i>=0;i--){
 			SupplierModel sm = supplierList.get(i);
 			//List<GoodsTypeModel> gtms = new ArrayList(sm.getGtms());
@@ -242,7 +242,7 @@ public class OrderAction extends BaseAction{
 		gtmList = goodsTypeEbi.getAllUnionBySupplier(supplierUuid);
 		//1.如果类别中的所有商品都使用过，该类别删除
 		//1.x如果类别中某个商品没有使用过，该类别保留
-		goodsType:
+		
 		for(int i = gtmList.size()-1;i>=0;i--){
 			GoodsTypeModel gtm = gtmList.get(i);
 			//根据商品类别获取商品
