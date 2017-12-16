@@ -26,27 +26,19 @@ public class GoodsDaoImpl extends BaseDaoImpl<GoodsModel> implements GoodsDao{
 			*/
 			dc.createAlias("gtm", "gt");
 			dc.add(Restrictions.eq("gt.sm", gqm.getGtm().getSm()));
-		}
-		
-		if(gqm.getName()!=null && gqm.getName().trim().length()>0){
+		} else 	if(gqm.getName()!=null && gqm.getName().trim().length()>0){
 			dc.add(Restrictions.like("name", "%"+gqm.getName().trim()+"%"));
-		}
-		if(gqm.getProducer()!=null && gqm.getProducer().trim().length()>0){
+		} else 	if(gqm.getProducer()!=null && gqm.getProducer().trim().length()>0){
 			dc.add(Restrictions.like("producer", "%"+gqm.getProducer().trim()+"%"));
-		}
-		if(gqm.getUnit()!=null && gqm.getUnit().trim().length()>0){
+		} else  if(gqm.getUnit()!=null && gqm.getUnit().trim().length()>0){
 			dc.add(Restrictions.eq("unit", gqm.getUnit().trim()));
-		}
-		if(gqm.getInPrice()!=null && gqm.getInPrice()>0){
+		}else 	if(gqm.getInPrice()!=null && gqm.getInPrice()>0){
 			dc.add(Restrictions.ge("inPrice", gqm.getInPrice()));
-		}
-		if(gqm.getInPrice2()!=null && gqm.getInPrice2()>0){
+		}else 	if(gqm.getInPrice2()!=null && gqm.getInPrice2()>0){
 			dc.add(Restrictions.le("inPrice", gqm.getInPrice2()));
-		}
-		if(gqm.getOutPrice()!=null && gqm.getOutPrice()>0){
+		}else 	if(gqm.getOutPrice()!=null && gqm.getOutPrice()>0){
 			dc.add(Restrictions.ge("outPrice", gqm.getOutPrice()));
-		}
-		if(gqm.getOutPrice2()!=null && gqm.getOutPrice2()>0){
+		}else 	if(gqm.getOutPrice2()!=null && gqm.getOutPrice2()>0){
 			dc.add(Restrictions.le("outPrice", gqm.getOutPrice2()));
 		}
 	}
