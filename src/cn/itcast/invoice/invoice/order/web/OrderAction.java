@@ -122,8 +122,6 @@ public class OrderAction extends BaseAction{
 				GoodsTypeModel gtm = gtms.get(j);
 				if(gtm.getGms().size() > 0){
 					flag=1;
-				}
-				if(flag==1) {
 					continue;
 				}
 			}
@@ -248,18 +246,22 @@ public class OrderAction extends BaseAction{
 		gtmList = goodsTypeEbi.getAllUnionBySupplier(supplierUuid);
 		//1.如果类别中的所有商品都使用过，该类别删除
 		//1.x如果类别中某个商品没有使用过，该类别保留
-		
+		int flag=0;
 		for(int i = gtmList.size()-1;i>=0;i--){
+			flag = 0;
 			GoodsTypeModel gtm = gtmList.get(i);
 			//根据商品类别获取商品
 			gmList = goodsEbi.getAllByGtmUuid(gtm.getUuid());
 			for(GoodsModel temp:gmList){
 				if(!uuids.contains(temp.getUuid())){
-					continue goodsType;
+					flag = 1;
+					continue;
 				}
 			}
 			//该类别中所有商品全部使用过
-			gtmList.remove(i);
+			if(flag ==1){
+				continue;
+			} else 	gtmList.remove(i);
 		}
 		
 		//根据第一个商品类别获取对应的所有商品
