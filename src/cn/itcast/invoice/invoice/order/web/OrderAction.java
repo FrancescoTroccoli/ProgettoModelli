@@ -110,20 +110,26 @@ public class OrderAction extends BaseAction{
 			}
 		}
 		*/
-		
+		int flag=0;
 		for(int i = supplierList.size()-1;i>=0;i--){
+			flag=0;
 			SupplierModel sm = supplierList.get(i);
 			//List<GoodsTypeModel> gtms = new ArrayList(sm.getGtms());
-			//性能优于上面的方案
+			//æ€§èƒ½ä¼˜äºŽä¸Šé�¢çš„æ–¹æ¡ˆ
 			List<GoodsTypeModel> gtms = goodsTypeEbi.getAllBySupplier(sm.getUuid());
-			//循环商品类别中的数据
+			//å¾ªçŽ¯å•†å“�ç±»åˆ«ä¸­çš„æ•°æ�®
 			for(int j = gtms.size()-1;j>=0;j--){
 				GoodsTypeModel gtm = gtms.get(j);
 				if(gtm.getGms().size() > 0){
-					continue A;
+					flag=1;
+				}
+				if(flag==1) {
+					continue;
 				}
 			}
-			supplierList.remove(i);
+			if(flag==1) {
+			 continue;
+		    }else supplierList.remove(i);
 		}
 		List<GoodsTypeModel> gtmList = goodsTypeEbi.getAllUnionBySupplier(supplierList.get(0).getUuid());
 		List<GoodsModel> gmList = goodsEbi.getAllByGtmUuid(gtmList.get(0).getUuid());
