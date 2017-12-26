@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/Calendar.js"></script>
@@ -88,7 +87,7 @@
 				    <tr  bgcolor="#FFFFFF">
 				      <td height="30" align="center">出生日期</td>
 				      <td>
-				      	<input type="text" value="${em.birthdayView}" size="25" onfocus="c.showMoreDay=false;c.show(this);" readonly="true"/>
+				      	<input type="text" value= request.getParameter(em.birthdayView) size="25" onfocus="c.showMoreDay=false;c.show(this);" readonly="true"/>
 				      	<s:hidden name="em.birthday"/>
 					  </td>
 				      <td align="center">所属部门</td>
